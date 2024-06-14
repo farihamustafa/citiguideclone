@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cityguide/Pages/home.dart';
+import 'package:cityguide/Pages/tourist_details.dart';
 import 'package:cityguide/Pages/login.dart';
 import 'package:cityguide/components/reusable/widgets.dart';
 

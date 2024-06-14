@@ -1,4 +1,4 @@
-import 'package:cityguide/Pages/home.dart';
+import 'package:cityguide/Pages/tourist_details.dart';
 import 'package:cityguide/Pages/homepage.dart';
 import 'package:cityguide/Pages/signup.dart';
 import 'package:cityguide/components/reusable/widgets.dart';
