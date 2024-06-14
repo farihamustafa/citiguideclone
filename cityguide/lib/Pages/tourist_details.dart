@@ -181,6 +181,10 @@ class TouristDetailsPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 10),
+
+              /// Add Reviews Section HERE
+
+
               Container(
                 height: 300,
                 color: Colors.grey[200],
