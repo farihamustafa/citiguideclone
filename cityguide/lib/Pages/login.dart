@@ -24,7 +24,7 @@ class _LoginState extends State<Login> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const TouristDetailsPage(
+            builder: (context) => TouristDetailsPage(
               image:
                   "https://images.pexels.com/photos/188030/pexels-photo-188030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             ),
@@ -58,12 +58,18 @@ class _LoginState extends State<Login> {
           child: Card(
               elevation: 20,
               child: Column(children: [
-                Container(
-                  height: 250.0,
-                  width: 300.0,
-                  child:
-                      Image.asset('assets/images/logo.png', fit: BoxFit.cover),
+                  Center(
+                  child: Container(
+                    height: 150.0,
+                    width: 150.0,
+                    margin: EdgeInsets.only(top: 20.0),
+                    child: Image.asset(
+                      'assets/images/log.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
+              
                 Form(
                   key: formkey,
                   child: Padding(

@@ -1,11 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class TouristDetailsPage extends StatelessWidget {
-  const TouristDetailsPage({
-    super.key,
+class Review {
+  final String reviewer;
+  final double rating;
+  final String text;
+
+  Review({required this.reviewer, required this.rating, required this.text});
+}
+
+class TouristDetailsPage extends StatefulWidget {
+  TouristDetailsPage({
+    Key? key,
     required this.image,
-  });
+  }) : super(key: key);
+
   final String image;
+
+  @override
+  _TouristDetailsPageState createState() => _TouristDetailsPageState();
+}
+
+class _TouristDetailsPageState extends State<TouristDetailsPage> {
+  double _userRating = 0;
+  TextEditingController _reviewController = TextEditingController();
+
+  List<Review> reviews = [
+    Review(reviewer: "Eren Yeager", rating: 4.5, text: "Amazing place!"),
+    Review(reviewer: "Armin Arlert", rating: 4.0, text: "Had a great time."),
+    Review(reviewer: "Jean Kirstein", rating: 5.0, text: "Absolutely loved it!"),
+  ];
+
+  void _submitReview() {
+    String reviewer = "User"; // Replace with actual user info if available
+    double rating = _userRating;
+    String text = _reviewController.text;
+
+    Review newReview = Review(reviewer: reviewer, rating: rating, text: text);
+
+    setState(() {
+      reviews.add(newReview);
+      _userRating = 0;
+      _reviewController.clear();
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Review submitted!'),
+        duration: Duration(seconds: 2),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _reviewController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,24 +69,22 @@ class TouristDetailsPage extends StatelessWidget {
         ),
         elevation: 0.0,
         backgroundColor: const Color.fromARGB(255, 221, 227, 236),
-        surfaceTintColor: Colors.transparent,
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Stack(
         children: [
           ListView(
-            padding: const EdgeInsets.only(
-                left: 8.0, top: 0.0, right: 8.0, bottom: 10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             children: [
               SizedBox(
                 height: size.height * 0.38,
-                width: double.maxFinite,
+                width: double.infinity,
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.vertical(
-                        bottom: Radius.circular(20)),
+                    borderRadius:
+                        const BorderRadius.vertical(bottom: Radius.circular(20)),
                     image: DecorationImage(
-                      image: NetworkImage(image),
+                      image: NetworkImage(widget.image),
                       fit: BoxFit.cover,
                     ),
                     boxShadow: [
@@ -50,7 +99,8 @@ class TouristDetailsPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              const Row(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                     flex: 3,
@@ -65,7 +115,7 @@ class TouristDetailsPage extends StatelessWidget {
                             color: Colors.black87,
                           ),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         Text(
                           "NY, USA",
                           style: TextStyle(
@@ -111,9 +161,7 @@ class TouristDetailsPage extends StatelessWidget {
                         Icons.schedule_outlined,
                         size: 26,
                       ),
-                      SizedBox(
-                        width: 7,
-                      ),
+                      SizedBox(width: 7),
                       Text(
                         "3 to 6 PM",
                         style: TextStyle(
@@ -151,7 +199,7 @@ class TouristDetailsPage extends StatelessWidget {
                       color: Colors.black87,
                     ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tristique, risus at volutpat pulvinar, justo sem accumsan ligula, nec dignissim neque risus eu eros. Sed aliquam augue diam, ut ullamcorper metus ullamcorper id. ",
                     style: TextStyle(
@@ -174,27 +222,112 @@ class TouristDetailsPage extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text("Write a Review"),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              RatingBar.builder(
+                                initialRating: _userRating,
+                                minRating: 1,
+                                direction: Axis.horizontal,
+                                allowHalfRating: true,
+                                itemCount: 5,
+                                itemSize: 30,
+                                itemBuilder: (context, _) => const Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                ),
+                                onRatingUpdate: (rating) {
+                                  setState(() {
+                                    _userRating = rating;
+                                  });
+                                },
+                              ),
+                              TextField(
+                                controller: _reviewController,
+                                maxLines: 3,
+                                decoration: InputDecoration(
+                                  labelText: 'Write your review...',
+                                  alignLabelWithHint: true,
+                                ),
+                              ),
+                            ],
+                          ),
+                          actions: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('Cancel'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                _submitReview();
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('Submit'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                     icon: const Icon(Icons.add_comment_outlined),
                   ),
                 ],
               ),
               const SizedBox(height: 10),
-
-              /// Add Reviews Section HERE
-
-
-              Container(
-                height: 300,
-                color: Colors.grey[200],
-                child: const Center(
-                  child: Text(
-                    'Reviews Section',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ),
-              ),
+              ...reviews.map((review) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                review.reviewer,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              const Spacer(),
+                              Row(
+                                children: List.generate(
+                                  5,
+                                  (index) => Icon(
+                                    index < review.rating
+                                        ? Icons.star
+                                        : Icons.star_border,
+                                    color: Colors.amber,
+                                    size: 16,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 5),
+                          Text(review.text),
+                        ],
+                      ),
+                    ),
+                  )),
               const SizedBox(height: 100),
             ],
           ),

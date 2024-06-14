@@ -14,15 +14,14 @@ textfield(
         prefixIcon: Icon(icon),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
     validator: (value) {
-      if (value!.isEmpty) {
+      if (value!.isEmpty ) {
         return "invalid " + label;
       } else {
-        null;
+        return null;
       }
     },
   );
 }
-
 materialbutton(
     {required Function() function,
     required String btnText,
