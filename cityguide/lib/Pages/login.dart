@@ -1,3 +1,4 @@
+import 'package:cityguide/Pages/profile_screen.dart';
 import 'package:cityguide/Pages/tourist_details.dart';
 import 'package:cityguide/Pages/homepage.dart';
 import 'package:cityguide/Pages/signup.dart';
@@ -21,14 +22,8 @@ class _LoginState extends State<Login> {
     if (formkey.currentState!.validate()) {
       print(_emailcontroller.text);
       print(_passwordcontroller.text);
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => TouristDetailsPage(
-              image:
-                  "https://images.pexels.com/photos/188030/pexels-photo-188030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            ),
-          ));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => ProfileSettingsPage()));
     }
   }
 
@@ -42,7 +37,6 @@ class _LoginState extends State<Login> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _emailcontroller.dispose();
     _passwordcontroller.dispose();
     super.dispose();
@@ -58,7 +52,7 @@ class _LoginState extends State<Login> {
           child: Card(
               elevation: 20,
               child: Column(children: [
-                  Center(
+                Center(
                   child: Container(
                     height: 150.0,
                     width: 150.0,
@@ -69,7 +63,6 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-              
                 Form(
                   key: formkey,
                   child: Padding(
