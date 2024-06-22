@@ -99,7 +99,7 @@ class _TouristDetailsPageState extends State<TouristDetailsPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
@@ -115,7 +115,7 @@ class _TouristDetailsPageState extends State<TouristDetailsPage> {
                             color: Colors.black87,
                           ),
                         ),
-                        const SizedBox(height: 5),
+                        SizedBox(height: 5),
                         Text(
                           "NY, USA",
                           style: TextStyle(
