@@ -1,5 +1,7 @@
 import 'package:cityguide/components/reusable/placestile.dart';
+import 'package:cityguide/components/reusable/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class TouristPlacesModel {
   final String name;
@@ -11,12 +13,10 @@ class TouristPlacesModel {
 }
 
 List<TouristPlacesModel> touristPlaces = [
-  TouristPlacesModel(name: "Mountain", image: "assets/icons/mountain.png"),
-  TouristPlacesModel(name: "Beach", image: "assets/icons/beach.png"),
-  TouristPlacesModel(name: "Forest", image: "assets/icons/forest.png"),
-  TouristPlacesModel(name: "City", image: "assets/icons/city.png"),
-  TouristPlacesModel(name: "Desert", image: "assets/icons/desert.png"),
-   TouristPlacesModel(name: "Desert", image: "assets/icons/desert.png"),
+  TouristPlacesModel(name: "Hotels", image: "assets/icons/mountain.png"),
+  TouristPlacesModel(name: "Popoular attractions", image: "assets/icons/beach.png"),
+  TouristPlacesModel(name: "Restaurants", image: "assets/icons/beach.png"),
+   TouristPlacesModel(name: "Others", image: "assets/icons/desert.png"),
 ];
 
 
@@ -78,22 +78,21 @@ class HomePage extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return Chip(
-            label: Text(touristPlaces[index].name),
-            avatar: CircleAvatar(
-              backgroundImage: AssetImage(touristPlaces[index].image),
-            ),
-            backgroundColor: Colors.white,
-            elevation: 0.4,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-          );
+          return Container(child: Padding(
+            padding: const EdgeInsets.all(3),
+            child: ElevatedButton(
+               style: ElevatedButton.styleFrom(
+    backgroundColor:  Colors.blue[300],
+  ),
+              onPressed: (){}, child: Text(touristPlaces[index].name, style: TextStyle(color: Colors.white),)),
+          ));
         },
         separatorBuilder: (context, index) =>
             const Padding(padding: EdgeInsets.only(right: 10)),
         itemCount: touristPlaces.length,
       ),
     ),
+ 
           Expanded(
             child: ListView(
               children: const [
