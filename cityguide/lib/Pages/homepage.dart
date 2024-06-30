@@ -20,7 +20,7 @@ List<TouristPlacesModel> touristPlaces = [
   TouristPlacesModel(name: "Others", image: "assets/icons/desert.png"),
 ];
 
-mybuton({required Function, required buttontext}) {
+myButon({required Function, required buttontext}) {
   return Padding(
     padding: const EdgeInsets.all(3),
     child: ElevatedButton(
@@ -91,10 +91,53 @@ class HomePage extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               children: [
-                mybuton(Function: () {}, buttontext: "Hotels"),
-                mybuton(Function: () {}, buttontext: "Restaurants"),
-                mybuton(Function: () {}, buttontext: "Popoular attractions"),
-                mybuton(Function: () {}, buttontext: "Others")
+                myButon(
+                    Function: () {
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return ListView(
+                              children: const [
+                                PlacesTile(
+                                  name: "Hilton Thai",
+                                  city: "LA",
+                                  rating: 4.3,
+                                  price: 195,
+                                  imagelink:
+                                      "https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                                ),
+                                PlacesTile(
+                                  name: "Four Seasons",
+                                  city: "LA",
+                                  rating: 4.7,
+                                  price: 450,
+                                  imagelink:
+                                      "https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                                ),
+                                PlacesTile(
+                                  name: "Ritz Carlton",
+                                  city: "LA",
+                                  rating: 4.5,
+                                  price: 345,
+                                  imagelink:
+                                      "https://images.pexels.com/photos/5007356/pexels-photo-5007356.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                                ),
+                                PlacesTile(
+                                  name: "Marriott",
+                                  city: "LA",
+                                  rating: 4.3,
+                                  price: 145,
+                                  imagelink:
+                                      "https://images.pexels.com/photos/188030/pexels-photo-188030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                                ),
+                              ],
+                            );
+                          });
+                    },
+                    buttontext: "Hotels"),
+                myButon(Function: () {}, buttontext: "Restaurants"),
+                myButon(Function: () {}, buttontext: "Popoular attractions"),
+                myButon(Function: () {}, buttontext: "Others")
               ],
               // itemBuilder: (context, index) {
               //   return Container(
