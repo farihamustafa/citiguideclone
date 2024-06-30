@@ -14,13 +14,29 @@ class TouristPlacesModel {
 
 List<TouristPlacesModel> touristPlaces = [
   TouristPlacesModel(name: "Hotels", image: "assets/icons/mountain.png"),
-  TouristPlacesModel(name: "Popoular attractions", image: "assets/icons/beach.png"),
+  TouristPlacesModel(
+      name: "Popoular attractions", image: "assets/icons/beach.png"),
   TouristPlacesModel(name: "Restaurants", image: "assets/icons/beach.png"),
-   TouristPlacesModel(name: "Others", image: "assets/icons/desert.png"),
+  TouristPlacesModel(name: "Others", image: "assets/icons/desert.png"),
 ];
 
-
-
+mybuton({required Function, required buttontext}) {
+  return Padding(
+    padding: const EdgeInsets.all(3),
+    child: ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blue[300],
+      ),
+      onPressed: () {
+        Function();
+      },
+      child: Text(
+        buttontext,
+        style: TextStyle(color: Colors.white),
+      ),
+    ),
+  );
+}
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -36,9 +52,6 @@ class HomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          
-      
-
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Container(
@@ -72,27 +85,37 @@ class HomePage extends StatelessWidget {
             ),
           ),
           SizedBox(
-      height: 40,
-      width: 460,
-      child: ListView.separated(
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Container(child: Padding(
-            padding: const EdgeInsets.all(3),
-            child: ElevatedButton(
-               style: ElevatedButton.styleFrom(
-    backgroundColor:  Colors.blue[300],
-  ),
-              onPressed: (){}, child: Text(touristPlaces[index].name, style: TextStyle(color: Colors.white),)),
-          ));
-        },
-        separatorBuilder: (context, index) =>
-            const Padding(padding: EdgeInsets.only(right: 10)),
-        itemCount: touristPlaces.length,
-      ),
-    ),
- 
+            height: 40,
+            width: MediaQuery.of(context).size.width,
+            child: ListView(
+              physics: const BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              children: [
+                mybuton(Function: () {}, buttontext: "Hotels"),
+                mybuton(Function: () {}, buttontext: "Restaurants"),
+                mybuton(Function: () {}, buttontext: "Popoular attractions"),
+                mybuton(Function: () {}, buttontext: "Others")
+              ],
+              // itemBuilder: (context, index) {
+              //   return Container(
+              //       child: Padding(
+              //     padding: const EdgeInsets.all(3),
+              //     // child: ElevatedButton(
+              //     //     style: ElevatedButton.styleFrom(
+              //     //       backgroundColor: Colors.blue[300],
+              //     //     ),
+              //     //     onPressed: () {},
+              //     //     child: Text(
+              //     //       touristPlaces[index].name,
+              //     //       style: TextStyle(color: Colors.white),
+              //     //     )),
+              //   ));
+              // },
+              // separatorBuilder: (context, index) =>
+              //     const Padding(padding: EdgeInsets.only(right: 10)),
+              //itemCount: touristPlaces.length,
+            ),
+          ),
           Expanded(
             child: ListView(
               children: const [
