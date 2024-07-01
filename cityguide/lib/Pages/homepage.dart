@@ -1,26 +1,53 @@
 import 'package:cityguide/components/reusable/placestile.dart';
 import 'package:flutter/material.dart';
 
-class TouristPlacesModel {
-  final String name;
-  final String image;
-  TouristPlacesModel({
-    required this.name,
-    required this.image,
-  });
-}
+// class TouristPlacesModel {
+//   final String name;
+//   final String image;
+//   TouristPlacesModel({
+//     required this.name,
+//     required this.image,
+//   });
+// }
 
-List<TouristPlacesModel> touristPlaces = [
-  TouristPlacesModel(name: "Mountain", image: "assets/icons/mountain.png"),
-  TouristPlacesModel(name: "Beach", image: "assets/icons/beach.png"),
-  TouristPlacesModel(name: "Forest", image: "assets/icons/forest.png"),
-  TouristPlacesModel(name: "City", image: "assets/icons/city.png"),
-  TouristPlacesModel(name: "Desert", image: "assets/icons/desert.png"),
-   TouristPlacesModel(name: "Desert", image: "assets/icons/desert.png"),
-];
+// List<TouristPlacesModel> touristPlaces = [
+//   TouristPlacesModel(name: "Mountain", image: "assets/icons/mountain.png"),
+//   TouristPlacesModel(name: "Beach", image: "assets/icons/beach.png"),
+//   TouristPlacesModel(name: "Forest", image: "assets/icons/forest.png"),
+//   TouristPlacesModel(name: "City", image: "assets/icons/city.png"),
+//   TouristPlacesModel(name: "Desert", image: "assets/icons/desert.png"),
+// ];
+// import 'package:travel_app/models/tourist_places_model.dart';
 
+// class TouristPlaces extends StatelessWidget {
+//   const TouristPlaces({Key? key}) : super(key: key);
 
-
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       height: 40,
+//       child: ListView.separated(
+//         physics: const BouncingScrollPhysics(),
+//         scrollDirection: Axis.horizontal,
+//         itemBuilder: (context, index) {
+//           return Chip(
+//             label: Text(touristPlaces[index].name),
+//             avatar: CircleAvatar(
+//               backgroundImage: AssetImage(touristPlaces[index].image),
+//             ),
+//             backgroundColor: Colors.white,
+//             elevation: 0.4,
+//             shape:
+//                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+//           );
+//         },
+//         separatorBuilder: (context, index) =>
+//             const Padding(padding: EdgeInsets.only(right: 10)),
+//         itemCount: touristPlaces.length,
+//       ),
+//     );
+//   }
+// }
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -36,9 +63,6 @@ class HomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          
-      
-
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Container(
@@ -71,29 +95,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-      height: 40,
-      width: 460,
-      child: ListView.separated(
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Chip(
-            label: Text(touristPlaces[index].name),
-            avatar: CircleAvatar(
-              backgroundImage: AssetImage(touristPlaces[index].image),
-            ),
-            backgroundColor: Colors.white,
-            elevation: 0.4,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-          );
-        },
-        separatorBuilder: (context, index) =>
-            const Padding(padding: EdgeInsets.only(right: 10)),
-        itemCount: touristPlaces.length,
-      ),
-    ),
           Expanded(
             child: ListView(
               children: const [

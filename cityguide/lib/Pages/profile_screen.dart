@@ -94,11 +94,20 @@ class _ProfileSettingsPageState extends State<ProfileSettingsPage> {
                 Positioned(
                   bottom: 0,
                   right: 0,
-                  child: IconButton(
-                    icon: const Icon(Icons.add_a_photo, color: Colors.blue),
-                    onPressed: () {
-                      // Handle add image action
-                    },
+                  child: Container(
+                    // color: Colors.blue,
+                    decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadiusDirectional.circular(20.0)),
+                    alignment: Alignment.center,
+                    child: IconButton(
+                      iconSize: 20.0,
+                      icon: const Icon(Icons.add_a_photo_outlined,
+                          color: Colors.white),
+                      onPressed: () {
+                        // Handle add image action
+                      },
+                    ),
                   ),
                 ),
               ],
