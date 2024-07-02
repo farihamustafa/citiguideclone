@@ -18,7 +18,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: TouristDetailsPage(
+        image:
+            "https://images.pexels.com/photos/188030/pexels-photo-188030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      ),
       //TouristDetailsPage(image: "https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png",),
     );
   }

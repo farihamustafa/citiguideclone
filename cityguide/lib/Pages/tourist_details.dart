@@ -28,7 +28,8 @@ class _TouristDetailsPageState extends State<TouristDetailsPage> {
   List<Review> reviews = [
     Review(reviewer: "Eren Yeager", rating: 4.5, text: "Amazing place!"),
     Review(reviewer: "Armin Arlert", rating: 4.0, text: "Had a great time."),
-    Review(reviewer: "Jean Kirstein", rating: 5.0, text: "Absolutely loved it!"),
+    Review(
+        reviewer: "Jean Kirstein", rating: 5.0, text: "Absolutely loved it!"),
   ];
 
   void _submitReview() {
@@ -81,8 +82,8 @@ class _TouristDetailsPageState extends State<TouristDetailsPage> {
                 width: double.infinity,
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius:
-                        const BorderRadius.vertical(bottom: Radius.circular(20)),
+                    borderRadius: const BorderRadius.vertical(
+                        bottom: Radius.circular(20)),
                     image: DecorationImage(
                       image: NetworkImage(widget.image),
                       fit: BoxFit.cover,
