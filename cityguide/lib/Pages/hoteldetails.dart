@@ -37,7 +37,7 @@ ScrollDetails() {
     return Container(
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-          color: Colors.blue[100],
+         color: Colors.blue[50],
           borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
       child: SingleChildScrollView(
