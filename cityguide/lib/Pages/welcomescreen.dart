@@ -1,6 +1,5 @@
 import 'package:cityguide/Pages/loginpage.dart';
 import 'package:cityguide/Pages/signup.dart';
-import 'package:simple_animations/simple_animations.dart';
 import 'package:flutter/material.dart';
 
 class WelcomScreen extends StatelessWidget {
@@ -20,7 +19,7 @@ class WelcomScreen extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Text(
+                  const Text(
                     "Welcome",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                   ),
@@ -48,7 +47,7 @@ class WelcomScreen extends StatelessWidget {
                     height: 60,
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()));
+                          MaterialPageRoute(builder: (context) => const LoginPage()));
                     },
                     shape: RoundedRectangleBorder(
                         side: const BorderSide(color: Colors.black),
@@ -74,7 +73,7 @@ class WelcomScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignupPage()));
+                                builder: (context) => const SignupPage()));
                       },
                       color: Colors.blue,
                       elevation: 0,

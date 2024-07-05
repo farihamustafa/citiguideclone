@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => ProfileSettingsPage(),
+          builder: (context) => const ProfileSettingsPage(),
         ),
       );
     }
@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => SignupPage(),
+        builder: (context) => const SignupPage(),
       ),
     );
   }
@@ -168,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                           ),
                           const SizedBox(height: 10),
-                          Container(
+                          SizedBox(
                             width: double.infinity,
                             height: 45,
                             child: MaterialButton(

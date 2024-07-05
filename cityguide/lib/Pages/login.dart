@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:cityguide/Pages/profile_screen.dart';
 import 'package:cityguide/Pages/tourist_details.dart';
 import 'package:cityguide/Pages/homepage.dart';
@@ -23,7 +25,7 @@ class _LoginState extends State<Login> {
       print(_emailcontroller.text);
       print(_passwordcontroller.text);
       Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => ProfileSettingsPage()));
+          MaterialPageRoute(builder: (context) => const ProfileSettingsPage()));
     }
   }
 
@@ -75,7 +77,7 @@ class _LoginState extends State<Login> {
                         btnColor: Colors.blue),
                     sizedbox(),
                     Container(
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("Don't have an account yet"),

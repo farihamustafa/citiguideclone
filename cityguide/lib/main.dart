@@ -1,7 +1,9 @@
 import 'package:cityguide/Pages/backgroundui.dart';
 import 'package:cityguide/Pages/homepage.dart';
 import 'package:cityguide/Pages/login.dart';
-import 'package:cityguide/Pages/profile_screen.dart';
+import 'package:cityguide/Pages/loginpage.dart';
+import 'package:cityguide/Pages/rest_details.dart';
+import 'package:cityguide/Pages/tourist_details.dart';
 import 'package:cityguide/Pages/welcomescreen.dart';
 
 import 'package:flutter/material.dart';
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProfileSettingsPage(),
+      home: RestaurantDetails(),
+      //TouristDetailsPage(image: "https://cdn.pixabay.com/photo/2019/08/11/18/59/icon-4399701_1280.png",),
     );
   }
 }

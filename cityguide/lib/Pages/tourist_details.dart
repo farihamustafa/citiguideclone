@@ -10,10 +10,10 @@ class Review {
 }
 
 class TouristDetailsPage extends StatefulWidget {
-  TouristDetailsPage({
-    Key? key,
+  const TouristDetailsPage({
+    super.key,
     required this.image,
-  }) : super(key: key);
+  });
 
   final String image;
 
@@ -23,12 +23,13 @@ class TouristDetailsPage extends StatefulWidget {
 
 class _TouristDetailsPageState extends State<TouristDetailsPage> {
   double _userRating = 0;
-  TextEditingController _reviewController = TextEditingController();
+  final TextEditingController _reviewController = TextEditingController();
 
   List<Review> reviews = [
     Review(reviewer: "Eren Yeager", rating: 4.5, text: "Amazing place!"),
     Review(reviewer: "Armin Arlert", rating: 4.0, text: "Had a great time."),
-    Review(reviewer: "Jean Kirstein", rating: 5.0, text: "Absolutely loved it!"),
+    Review(
+        reviewer: "Jean Kirstein", rating: 5.0, text: "Absolutely loved it!"),
   ];
 
   void _submitReview() {
@@ -45,7 +46,7 @@ class _TouristDetailsPageState extends State<TouristDetailsPage> {
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+      const SnackBar(
         content: Text('Review submitted!'),
         duration: Duration(seconds: 2),
       ),
@@ -81,8 +82,8 @@ class _TouristDetailsPageState extends State<TouristDetailsPage> {
                 width: double.infinity,
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius:
-                        const BorderRadius.vertical(bottom: Radius.circular(20)),
+                    borderRadius: const BorderRadius.vertical(
+                        bottom: Radius.circular(20)),
                     image: DecorationImage(
                       image: NetworkImage(widget.image),
                       fit: BoxFit.cover,
@@ -99,7 +100,7 @@ class _TouristDetailsPageState extends State<TouristDetailsPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
@@ -115,7 +116,7 @@ class _TouristDetailsPageState extends State<TouristDetailsPage> {
                             color: Colors.black87,
                           ),
                         ),
-                        const SizedBox(height: 5),
+                        SizedBox(height: 5),
                         Text(
                           "NY, USA",
                           style: TextStyle(
@@ -199,7 +200,7 @@ class _TouristDetailsPageState extends State<TouristDetailsPage> {
                       color: Colors.black87,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4),
                   Text(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tristique, risus at volutpat pulvinar, justo sem accumsan ligula, nec dignissim neque risus eu eros. Sed aliquam augue diam, ut ullamcorper metus ullamcorper id. ",
                     style: TextStyle(
@@ -250,7 +251,7 @@ class _TouristDetailsPageState extends State<TouristDetailsPage> {
                               TextField(
                                 controller: _reviewController,
                                 maxLines: 3,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: 'Write your review...',
                                   alignLabelWithHint: true,
                                 ),
