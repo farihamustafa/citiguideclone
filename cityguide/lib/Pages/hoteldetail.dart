@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 // Define Review class (same as in TouristDetailsPage)
@@ -14,7 +13,7 @@ class Review {
 }
 
 class Hotel_details extends StatefulWidget {
-  const Hotel_details({Key? key}) : super(key: key);
+  const Hotel_details({super.key});
 
   @override
   _Hotel_detailsState createState() => _Hotel_detailsState();
@@ -49,7 +48,7 @@ class _Hotel_detailsState extends State<Hotel_details> {
 
     // Show a snackbar or any other feedback
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+      const SnackBar(
         content: Text('Review submitted!'),
         duration: Duration(seconds: 2),
       ),
@@ -87,10 +86,10 @@ class _Hotel_detailsState extends State<Hotel_details> {
               style: ElevatedButton.styleFrom(
                 elevation: 5,
                 backgroundColor: Colors.blue,
-                shape: StadiumBorder(),
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
+                shape: const StadiumBorder(),
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
               ),
-              child: Text(
+              child: const Text(
                 "Get Direction",
                 style: TextStyle(
                   color: Colors.white,
@@ -113,7 +112,7 @@ class _Hotel_detailsState extends State<Hotel_details> {
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
             color: Colors.blue[50],
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
             ),
@@ -136,8 +135,8 @@ class _Hotel_detailsState extends State<Hotel_details> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -169,7 +168,7 @@ class _Hotel_detailsState extends State<Hotel_details> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 45,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
@@ -202,8 +201,8 @@ class _Hotel_detailsState extends State<Hotel_details> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -226,11 +225,11 @@ class _Hotel_detailsState extends State<Hotel_details> {
                     ],
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Reviews",
                       style: TextStyle(
                         fontSize: 18,
@@ -243,7 +242,7 @@ class _Hotel_detailsState extends State<Hotel_details> {
                         showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
-                            title: Text("Write a Review"),
+                            title: const Text("Write a Review"),
                             content: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -254,7 +253,7 @@ class _Hotel_detailsState extends State<Hotel_details> {
                                   allowHalfRating: true,
                                   itemCount: 5,
                                   itemSize: 30,
-                                  itemBuilder: (context, _) => Icon(
+                                  itemBuilder: (context, _) => const Icon(
                                     Icons.star,
                                     color: Colors.amber,
                                   ),
@@ -267,7 +266,7 @@ class _Hotel_detailsState extends State<Hotel_details> {
                                 TextField(
                                   controller: _reviewController,
                                   maxLines: 3,
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: 'Write your review...',
                                     alignLabelWithHint: true,
                                   ),
@@ -279,24 +278,24 @@ class _Hotel_detailsState extends State<Hotel_details> {
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('Cancel'),
+                                child: const Text('Cancel'),
                               ),
                               ElevatedButton(
                                 onPressed: () {
                                   _submitReview();
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('Submit'),
+                                child: const Text('Submit'),
                               ),
                             ],
                           ),
                         );
                       },
-                      icon: Icon(Icons.add_comment_outlined),
+                      icon: const Icon(Icons.add_comment_outlined),
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 ...reviews.map((review) => Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Container(
@@ -308,7 +307,7 @@ class _Hotel_detailsState extends State<Hotel_details> {
                             BoxShadow(
                               color: Colors.black.withOpacity(0.1),
                               blurRadius: 10,
-                              offset: Offset(0, 5),
+                              offset: const Offset(0, 5),
                             ),
                           ],
                         ),
@@ -319,12 +318,12 @@ class _Hotel_detailsState extends State<Hotel_details> {
                               children: [
                                 Text(
                                   review.reviewer,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Row(
                                   children: List.generate(
                                     5,
@@ -339,13 +338,13 @@ class _Hotel_detailsState extends State<Hotel_details> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 5),
+                            const SizedBox(height: 5),
                             Text(review.text),
                           ],
                         ),
                       ),
                     )),
-                SizedBox(height: 100),
+                const SizedBox(height: 100),
               ],
             ),
           ),
@@ -375,7 +374,7 @@ class _Hotel_detailsState extends State<Hotel_details> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back_ios,
                 size: 20,
                 color: Colors.white,
@@ -407,7 +406,7 @@ class _Hotel_detailsState extends State<Hotel_details> {
                 ),
                 Text(
                   icontext,
-                  style: TextStyle(color: Colors.black54, fontSize: 10),
+                  style: const TextStyle(color: Colors.black54, fontSize: 10),
                 ),
               ],
             ),
